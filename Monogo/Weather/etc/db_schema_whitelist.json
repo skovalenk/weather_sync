@@ -1,0 +1,17 @@
+{
+  "monogo_weather_log": {
+    "column": {
+      "weather_id": true,
+      "value": true,
+      "country_id": true,
+      "city": true,
+      "logged_at": true
+    },
+    "index": {
+      "MONOGO_WEATHER_LOG_WEATHER_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}

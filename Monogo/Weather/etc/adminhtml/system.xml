@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="monogo" translate="label" sortOrder="10">
+            <label>Monogo</label>
+        </tab>
+        <section id="weather" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Weather Configurations</label>
+            <tab>monogo</tab>
+            <group id="general" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="cron_timing" translate="label" type="text" sortOrder="1" showInDefault="1" showInStore="0" showInWebsite="0">
+                    <label>CRON configuration</label>
+                    <comment>Format example: */10 * * * *</comment>
+                </field>
+                <field id="provider" translate="label" type="select" sortOrder="2" showInDefault="1">
+                    <label>Weather Provider</label>
+                    <source_model>Monogo\Weather\Model\WeatherProvidersPool</source_model>
+                </field>
+                <!-- @TODO: Credentials for every provider can be different, currently we are specifying credentials only for one-->
+                <field id="open_weather_api_key" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Open Weather Key</label>
+                    <comment>Sign-up or Sign-in and proceed by this link: https://home.openweathermap.org/api_keys</comment>
+                </field>
+                <field id="available_cities" type="multiselect" translate="label" sortOrder="5" showInDefault="1">
+                    <label>Available Countries and Cities</label>
+                    <source_model>Monogo\Weather\Model\Source\AvailableCities</source_model>
+                </field>
+                <field id="metric" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Metric</label>
+                    <source_model>Monogo\Weather\Model\Source\Metrics</source_model>
+                    <comment>For every store view, you can choose which metric would you prefer</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Monogo\Weather\Spi\CountryAndCityResolverInterface" type="\Monogo\Weather\Model\DummyCountryAndCityResolver" />
+    <type name="Monogo\Weather\Model\WeatherProvidersPool">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="open-weather" xsi:type="object">Monogo\Weather\Model\Providers\OpenWeather</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="monogo_weather_temperature_increment" xsi:type="object">Monogo\Weather\Console\Command\TemperatureIncrement</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

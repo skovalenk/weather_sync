@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weather>
+            <general>
+                <cron_timing>*/10 * * * *</cron_timing>
+                <provider>open-weather</provider>
+                <open_weather_api_key>ea3820d6f882df9890cc817e50774755</open_weather_api_key>
+                <available_cities>PL=Lublin,PL=Krakow,PL=Katowice</available_cities>
+                <metrics>celsius</metrics>
+            </general>
+        </weather>
+    </default>
+</config>

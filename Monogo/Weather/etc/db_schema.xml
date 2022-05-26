@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="monogo_weather_log" resource="default" engine="innodb" comment="Weather log archive">
+        <column xsi:type="int" name="weather_id" padding="11" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="float" name="value" unsigned="true" nullable="false"/>
+        <column xsi:type="varchar" name="country_id" length="64" nullable="false" comment="ISO2 Country Code" />
+        <column xsi:type="varchar" name="city" length="255" nullable="false" comment="City Name" />
+        <column xsi:type="bigint" name="logged_at" nullable="false" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="weather_id"/>
+        </constraint>
+        <index referenceId="MONOGO_WEATHER_LOG_WEATHER_ID" indexType="btree">
+            <column name="weather_id"/>
+        </index>
+        <!--   We need one key to make searches by:-->
+        <!--   country and city-->
+        <!--   country-->
+        <!--   Country should goes first in the index as it doesn`t have high selectivity, comparing with city-->
+        <index referenceId="MONOGO_WEATHER_LOG_COUNTRY_ID_CITY" indexType="btree">
+            <column name="country_id" />
+            <column name="city" />
+        </index>
+    </table>
+</schema>
